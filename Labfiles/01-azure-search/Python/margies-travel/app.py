@@ -1,6 +1,6 @@
 import os
 from flask import Flask, request, render_template, redirect, url_for
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 
 # Import search namespaces
 from azure.core.credentials import AzureKeyCredential
@@ -10,10 +10,11 @@ from azure.search.documents import SearchClient
 app = Flask(__name__)
 
 # Azure Search constants
-load_dotenv()
+load_dotenv(find_dotenv(".env"))
 search_endpoint = os.getenv('SEARCH_SERVICE_ENDPOINT')
 search_key = os.getenv('SEARCH_SERVICE_QUERY_KEY')
 search_index = os.getenv('SEARCH_INDEX_NAME')
+print("search ep",search_endpoint)
 
 # Wrapper function for request to search index
 def search_query(search_text, filter_by=None, sort_order=None):
