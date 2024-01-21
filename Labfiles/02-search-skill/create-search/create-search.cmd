@@ -1,8 +1,8 @@
 @echo off
 
 rem Set values for your Search service
-set url=YOUR_SEARCH_URL
-set admin_key=YOUR_ADMIN_KEY
+set url="https://ai102srch2043316415.search.windows.net"
+set admin_key="Me8vSjyXXkYXFJdXBjQGofOFuy6n9KtMCdYDjdwXFkAzSeBHX4lO"
 
 echo -----
 echo Creating the data source...

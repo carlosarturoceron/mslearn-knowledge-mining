@@ -1092,6 +1092,72 @@ Waiting for 0 seconds, press CTRL+C to quit ...
 -----
 looks like issue in skillset API Key
 
+SUMMARY
+
+In this module, you learned how to use Azure AI Search to create an AI Search solution that consists of:
+
+A data source where the data to be indexed is stored (though you can also push data directly into an index by using the API).
+A skillset that defines and enrichment pipeline of cognitive skills to enrich the index data.
+An index that defines fields, which the user can query.
+An indexer that populates the fields in the index with values extracted from the source data.
+Now that you've completed this module, you've learned to:
+
+Create an Azure AI Search solution
+Develop a search application
+You can use the Azure AI Search REST APIs or SDKs to create and manage index objects, and to implement a client application that queries the index to retrieve information.
+
+## Create a custom skill for Azure AI Search
+
+Use the power of artificial intelligence to enrich your data and find new insights.
+
+Learning objectives
+In this module you will learn how to:
+
+Implement a custom skill for Azure AI Search
+Integrate a custom skill into an Azure AI Search skillset
+
+### Add a custom skill to a skillset
+Completed
+100 XP
+5 minutes
+To integrate a custom skill into your indexing solution, you must add a skill for it to a skillset using the Custom.WebApiSkill skill type.
+
+The skill definition must:
+
+Specify the URI to your web API endpoint, including parameters and headers if necessary.
+Set the context to specify at which point in the document hierarchy the skill should be called
+Assign input values, usually from existing document fields
+Store output in a new field, optionally specifying a target field name (otherwise the output name is used)
+JSON
+
+```json
+{
+    "skills": [
+      ...,
+      {
+        "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+        "description": "<custom skill description>",
+        "uri": "https://<web_api_endpoint>?<params>",
+        "httpHeaders": {
+            "<header_name>": "<header_value>"
+        },
+        "context": "/document/<where_to_apply_skill>",
+        "inputs": [
+          {
+            "name": "<input1_name>",
+            "source": "/document/<path_to_input_field>"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "<output1_name>",
+            "targetName": "<optional_field_name>"
+          }
+        ]
+      }
+  ]
+}
+```
 
 
 
